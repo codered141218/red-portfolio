@@ -22,16 +22,20 @@ export default function PortfolioPage() {
         <WorkSection />
         <WhySection />
       </main>
-      <footer className="site-footer">
-        <a className="footer-brand" href="#top">
-          John Reden<span>.</span>
-        </a>
-        <p>
-          Operations, systems, and digital support for teams that want work to
-          move smoothly.
-        </p>
-        <span>&copy; {new Date().getFullYear()} John Reden.</span>
-      </footer>
+     <footer className="site-footer">
+  <a className="footer-brand" href="#top">
+    John Reded<span>.</span>
+  </a>
+
+  <p>
+    Helping businesses streamline operations, optimize systems, and build
+    efficient workflows that drive sustainable growth.
+  </p>
+
+  <span>
+    © {new Date().getFullYear()} John Reded C. Gavieta. All rights reserved.
+  </span>
+</footer>
     </div>
   );
 }
