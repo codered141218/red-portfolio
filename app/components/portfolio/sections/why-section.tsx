@@ -1,5 +1,5 @@
 import { ArrowUpRight, Check } from "lucide-react";
-import { whyItems } from "../data";
+import { mailtoHref, profile, whyItems } from "../data";
 
 export default function WhySection() {
   return (
@@ -24,14 +24,11 @@ export default function WhySection() {
             clear, practical way forward.
           </p>
           <div className="contact-actions">
-            <a
-              href="mailto:jrgavieta.personal@gmail.com"
-              className="button button-primary"
-            >
+            <a href={mailtoHref} className="button button-primary">
               Start a conversation <ArrowUpRight aria-hidden="true" />
             </a>
             <a
-              href="https://www.onlinejobs.ph/jobseekers/info/3478596"
+              href={profile.onlineJobs.href}
               target="_blank"
               rel="noreferrer"
               className="text-link"

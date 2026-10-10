@@ -8,13 +8,17 @@ export default function ServicesSection() {
       </div>
 
       <div className="service-grid">
-        {services.map(([title, ...items], index) => (
-          <article className="service" key={title}>
-            <span className="service-number">0{index + 1}</span>
+        {services.map((service, index) => (
+          <article className="service" key={service.title}>
+            <span className="service-number">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <div>
-              <h3>{title}</h3>
+              <h3>{service.title}</h3>
               <ul>
-                {items.map((item) => <li key={item}>{item}</li>)}
+                {service.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
           </article>
