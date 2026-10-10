@@ -108,6 +108,7 @@ export const toolGroups: ToolGroup[] = [
     tools: [
       { name: "SAP Business One", src: "/logo/business-systems/sap-business-one.png" },
       { name: "QuickBooks", src: "/logo/business-systems/quickbooks.png" },
+      { name: "Xero", src: "/logo/business-systems/xero.png" },
       { name: "Monday.com", src: "/logo/business-systems/monday-com.png" },
       {
         name: "Microsoft Dynamics 365 Business Central",
