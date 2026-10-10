@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# John Reden portfolio
 
-## Getting Started
+Single-page portfolio for John Reden Gavieta, Operations & Systems Specialist.
+Built with Next.js 16 (App Router, React Compiler), React 19, Tailwind CSS v4,
+and hand-written CSS in `app/globals.css`.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>. The production build and checks:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+All personal details and page content live in one file:
+[`app/components/portfolio/data.ts`](app/components/portfolio/data.ts).
 
-To learn more about Next.js, take a look at the following resources:
+| What to change                          | Where in `data.ts`      |
+| --------------------------------------- | ----------------------- |
+| Name, role, email, LinkedIn, OnlineJobs | `profile`               |
+| Header / footer navigation              | `navLinks`, `contactLink` |
+| Education and experience                | `education`, `experience` |
+| Tools & systems logos                   | `toolGroups`            |
+| Core services                           | `services`              |
+| Selected work screenshots and captions  | `workCategories`        |
+| "Why work with me" bullets              | `whyItems`              |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The highlight numbers in the About section (business systems, tools & platforms)
+are counted from `toolGroups`, so they stay accurate as logos are added or removed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Images live in `public/`:
 
-## Deploy on Vercel
+- `public/john-reden-portrait.png` - hero portrait (transparent PNG).
+- `public/logo/<group>/` - tool logos, roughly 112x40 display size.
+- `public/sample-works/<category>/` - work screenshots at 651x303 (2.15:1).
+  Give each image a short, specific `alt` in `workCategories`; it doubles as
+  the caption in the lightbox.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Site URL and sharing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set `NEXT_PUBLIC_SITE_URL` to the production domain (for example
+`https://johnreden.com`) so the canonical URL, Open Graph tags, sitemap,
+robots.txt, and structured data point at the live site. On Vercel the project's
+production URL is used automatically when the variable is not set.
+
+The following are generated at build time from the content in `data.ts`:
+
+- `/opengraph-image` - social share card (`app/opengraph-image.tsx`)
+- `/icon` and `/apple-icon` - favicons (`app/icon.tsx`, `app/apple-icon.tsx`)
+- `/robots.txt`, `/sitemap.xml`, `/manifest.webmanifest`
+- Person structured data (JSON-LD) in `app/page.tsx`
+
+## Project layout
+
+```
+app/
+  layout.tsx                 metadata, viewport, skip link
+  page.tsx                   home page + JSON-LD
+  not-found.tsx              custom 404
+  globals.css                all styles (dark theme, responsive rules)
+  components/
+    navbar.tsx               sticky header, scroll-spy, mobile drawer
+    ui/grid-background.tsx   interactive hero grid
+    portfolio/
+      data.ts                content
+      portfolio-page.tsx     page composition + footer
+      sections/              hero, about, expertise, services, work, why
+```
+
+## Deploy
+
+Any Next.js host works. For Vercel, import the repository and set
+`NEXT_PUBLIC_SITE_URL` in the project environment variables.

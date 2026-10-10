@@ -2,21 +2,49 @@
 
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { contactLink, navLinks, profile } from "@/app/components/portfolio/data";
 
-const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Expertise", href: "#expertise" },
-  { name: "Services", href: "#services" },
-  { name: "Work", href: "#projects" },
-];
-
-const mobileNavLinks = [...navLinks, { name: "Contact", href: "#contact" }];
+const mobileNavLinks = [...navLinks, contactLink];
+const sectionHrefs = ["#top", ...mobileNavLinks.map((link) => link.href)];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeHref, setActiveHref] = useState("#about");
+  const [activeHref, setActiveHref] = useState("#top");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLElement>(null);
+
+  // Highlight the nav link for whichever section is currently in view.
+  useEffect(() => {
+    const sections = sectionHrefs
+      .map((href) => document.getElementById(href.slice(1)))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (!sections.length) return;
+
+    const visibility = new Map<Element, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          visibility.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0);
+        }
+
+        let best: Element | null = null;
+        let bestRatio = 0;
+        for (const [section, ratio] of visibility) {
+          if (ratio > bestRatio) {
+            best = section;
+            bestRatio = ratio;
+          }
+        }
+
+        if (best) setActiveHref(`#${best.id}`);
+      },
+      { rootMargin: "-64px 0px -45% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -64,6 +92,7 @@ export default function Navbar() {
     setActiveHref(href);
     closeMenu();
   };
+  const isActive = (href: string) => activeHref === href;
 
   return (
     <header className="site-header">
@@ -71,10 +100,11 @@ export default function Navbar() {
         <a
           href="#top"
           className="brand"
-          aria-label="John Reden portfolio home"
+          aria-label={`${profile.firstName} ${profile.lastName} portfolio home`}
           onClick={() => handleNavClick("#top")}
         >
-          John Reden<span>.</span>
+          {profile.firstName} {profile.lastName}
+          <span>.</span>
         </a>
 
         <div className="nav-links">
@@ -83,6 +113,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               className="nav-link"
+              aria-current={isActive(link.href) ? "location" : undefined}
               onClick={() => handleNavClick(link.href)}
             >
               {link.name}
@@ -91,9 +122,9 @@ export default function Navbar() {
         </div>
 
         <a
-          href="#contact"
+          href={contactLink.href}
           className="nav-cta nav-cta-desktop"
-          onClick={() => handleNavClick("#contact")}
+          onClick={() => handleNavClick(contactLink.href)}
         >
           Let&apos;s talk <ArrowUpRight aria-hidden="true" />
         </a>
@@ -130,7 +161,8 @@ export default function Navbar() {
                 className="mobile-nav-brand"
                 onClick={() => handleNavClick("#top")}
               >
-                John Reden<span>.</span>
+                {profile.firstName} {profile.lastName}
+                <span>.</span>
               </a>
 
               <button
@@ -151,7 +183,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   className="mobile-nav-link"
-                  aria-current={activeHref === link.href ? "location" : undefined}
+                  aria-current={isActive(link.href) ? "location" : undefined}
                   onClick={() => handleNavClick(link.href)}
                 >
                   {link.name}
