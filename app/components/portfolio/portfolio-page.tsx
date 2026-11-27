@@ -1,5 +1,6 @@
 import Navbar from "@/app/components/navbar";
 import GridBackground from "@/app/components/ui/grid-background";
+import type { PublicResult } from "@/app/lib/admin/storage";
 import { mailtoHref, profile } from "./data";
 import AboutSection from "./sections/about-section";
 import AiSection from "./sections/ai-section";
@@ -11,7 +12,7 @@ import ServicesSection from "./sections/services-section";
 import WhySection from "./sections/why-section";
 import StickyCta from "./sticky-cta";
 
-export default function PortfolioPage() {
+export default function PortfolioPage({ projects }: { projects: PublicResult }) {
   const externalLinks = [profile.linkedin, profile.upwork, profile.onlineJobs];
 
   return (
@@ -24,7 +25,7 @@ export default function PortfolioPage() {
         </div>
         <AboutSection />
         <AppsSection />
-        <ProjectsSection />
+        <ProjectsSection result={projects} />
         <AiSection />
         <ServicesSection />
         <WhySection />
