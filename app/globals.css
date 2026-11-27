@@ -1782,7 +1782,7 @@ textarea:focus-visible,
 /* ---------- Why ---------- */
 
 .why .reason-list {
-  max-width: 860px;
+  max-width: none;
 }
 
 /* ---------- Contact ---------- */
