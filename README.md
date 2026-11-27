@@ -78,6 +78,32 @@ app/
       sections/              hero, about, apps, projects, ai, services, work, why, contact
 ```
 
+## How to set up the staff area
+
+The staff area (`/admin`) lets the owner add, edit, publish and remove
+gallery projects without a redeploy. Published projects show on the home page;
+drafts never do. It needs three settings and a Blob store.
+
+1. In the Vercel dashboard open the project, go to Storage, and create a Blob
+   store (public access). Connect it to the project. Vercel then adds
+   `BLOB_READ_WRITE_TOKEN` for you; do not add it by hand.
+2. In Settings, Environment Variables, add these three names:
+   - `ADMIN_EMAIL`: the email you sign in with.
+   - `ADMIN_PASSWORD`: a long, unique password.
+   - `SESSION_SECRET`: a random string of at least 32 characters.
+3. Redeploy, then open `/admin` and sign in.
+
+Until these exist, `/admin` shows "Staff area isn't set up yet" and the
+project list shows "Storage isn't connected yet". Nothing breaks on the public
+site; the gallery is simply empty.
+
+For local development only, put the same names in `.env.local` (it is
+git-ignored). Never commit real values. To change the password, edit
+`ADMIN_PASSWORD` in Vercel and redeploy.
+
+The staff area is `noindex`, disallowed in `robots.txt` and left out of the
+sitemap.
+
 ## Deploy
 
 Any Next.js host works. For Vercel, import the repository and set
