@@ -111,11 +111,19 @@ export const apps: App[] = [
   },
 ];
 
-export type AiTool = { name: string; description: string };
+export type AiTool = { name: string; description: string; logo?: string };
 
 export const aiTools: AiTool[] = [
-  { name: "Claude Code", description: "Heavy software engineering." },
-  { name: "Codex", description: "Heavy software engineering." },
+  {
+    name: "Claude Code",
+    description: "Heavy software engineering.",
+    logo: "/logo/ai/claude.svg",
+  },
+  {
+    name: "Codex",
+    description: "Heavy software engineering.",
+    logo: "/logo/ai/openai.svg",
+  },
   {
     name: "MiniMax",
     description:
@@ -128,6 +136,41 @@ export const aiTools: AiTool[] = [
       "Recording and summarising meetings so I don't miss any details.",
   },
   { name: "Specboard", description: "Part of my toolkit." },
+  {
+    name: "Supabase",
+    description: "Database and authentication for my apps.",
+    logo: "/logo/ai/supabase.svg",
+  },
+  {
+    name: "Railway",
+    description: "Hosting for backends and services.",
+    logo: "/logo/ai/railway.svg",
+  },
+  {
+    name: "Vercel",
+    description: "Hosting and previews for my web apps.",
+    logo: "/logo/ai/vercel.svg",
+  },
+  {
+    name: "Dockerfile",
+    description: "Packaging apps into containers.",
+    logo: "/logo/ai/docker.svg",
+  },
+  {
+    name: "Laravel Herd",
+    description: "Local PHP and Laravel development.",
+    logo: "/logo/ai/laravel.svg",
+  },
+  {
+    name: "GitHub",
+    description: "Code hosting, pull requests and automation.",
+    logo: "/logo/ai/github.svg",
+  },
+  {
+    name: "Guild",
+    description: "My own AI dev crew that plans, builds and ships pull requests.",
+    logo: "/brand/guild-logo-horizontal-transparent.svg",
+  },
 ];
 
 export const alsoToolkit = [

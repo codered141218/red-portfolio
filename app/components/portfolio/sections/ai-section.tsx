@@ -14,7 +14,25 @@ export default function AiSection() {
       <div className="ai-grid">
         {aiTools.map((tool) => (
           <article className="card ai-card" key={tool.name}>
-            <h3>{tool.name}</h3>
+            <div className="ai-head">
+              {tool.logo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={
+                    tool.name === "Guild" ? "ai-logo ai-logo-wide" : "ai-logo"
+                  }
+                  src={tool.logo}
+                  alt=""
+                  width={28}
+                  height={28}
+                />
+              ) : (
+                <span className="ai-logo ai-mono" aria-hidden="true">
+                  {tool.name.charAt(0)}
+                </span>
+              )}
+              <h3>{tool.name}</h3>
+            </div>
             <p>{tool.description}</p>
           </article>
         ))}

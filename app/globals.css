@@ -1684,6 +1684,36 @@ textarea:focus-visible,
 
 .ai-card h3 {
   font-size: 1.1rem;
+  margin: 0;
+}
+
+.ai-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.ai-logo {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.ai-logo-wide {
+  width: 72px;
+}
+
+.ai-mono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
 }
 
 .subheading + .chip-list {
