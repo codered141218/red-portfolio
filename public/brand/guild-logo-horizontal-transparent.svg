@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1780 600" width="1780" height="600">
+  <title>GUILD</title>
+  <defs>
+    <linearGradient id="neon" x1="-220" y1="-220" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3ef2ff"/><stop offset="0.5" stop-color="#5b8cff"/><stop offset="1" stop-color="#b45cff"/>
+    </linearGradient>
+    <linearGradient id="word" x1="295" y1="0" x2="905" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3ef2ff"/><stop offset="0.5" stop-color="#e8f4ff"/><stop offset="1" stop-color="#b45cff"/>
+    </linearGradient>
+    <radialGradient id="core"><stop offset="0" stop-color="#fff"/><stop offset="0.4" stop-color="#8ff7ff"/><stop offset="1" stop-color="#3ef2ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#4b6bff" stop-opacity="0.35"/><stop offset="1" stop-color="#4b6bff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%"><stop offset="0" stop-color="#101a3a"/><stop offset="0.55" stop-color="#070b1c"/><stop offset="1" stop-color="#02030a"/></radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="b1"/><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b2"/>
+      <feMerge><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g class="backdrop" display="none">
+    <rect width="1780" height="600" fill="url(#bg)"/>
+    <circle cx="320" cy="300" r="320" fill="url(#halo)"/>
+  </g>
+  <g transform="translate(320 300) scale(0.82)">
+    <g fill="none" stroke="#7aa2ff" stroke-opacity="0.35">
+      <polygon points="0,-275 238.2,-137.5 238.2,137.5 0,275 -238.2,137.5 -238.2,-137.5" stroke-width="1.5" stroke-dasharray="2 10"/>
+      <path d="M-60,-300 A300,300 0 0 1 60,-300" stroke="#3ef2ff" stroke-opacity="0.8" stroke-width="3"/>
+      <path d="M-60,-300 A300,300 0 0 1 60,-300" stroke="#b45cff" stroke-opacity="0.8" stroke-width="3" transform="rotate(180)"/>
+    </g>
+    <g stroke="#8fb0ff" stroke-opacity="0.55" stroke-width="3" fill="none">
+      <polygon points="95,0 47.5,82.3 -47.5,82.3 -95,0 -47.5,-82.3 47.5,-82.3"/>
+      <line x1="0" y1="0" x2="-47.5" y2="-82.3"/><line x1="0" y1="0" x2="-47.5" y2="82.3"/><line x1="0" y1="0" x2="95" y2="0"/>
+      <line x1="-95" y1="0" x2="-190.5" y2="0" stroke-dasharray="4 8"/>
+      <line x1="47.5" y1="-82.3" x2="95" y2="-165" stroke-dasharray="4 8"/>
+      <line x1="47.5" y1="82.3" x2="95" y2="165" stroke-dasharray="4 8"/>
+    </g>
+    <g filter="url(#glow)">
+      <path d="M190.5,-110 L0,-220 L-190.5,-110 L-190.5,110 L0,220 L190.5,110 L190.5,0 L95,0" fill="none" stroke="url(#neon)" stroke-width="30" stroke-linejoin="miter"/>
+    </g>
+    <g filter="url(#glow)">
+      <circle cx="190.5" cy="-110" r="15" fill="#02030a" stroke="#3ef2ff" stroke-width="5"/>
+      <circle cx="95" cy="0" r="13" fill="#02030a" stroke="#9fd8ff" stroke-width="5"/>
+      <g fill="#e8f4ff"><circle cx="47.5" cy="82.3" r="7"/><circle cx="-47.5" cy="82.3" r="7"/><circle cx="-95" cy="0" r="7"/><circle cx="-47.5" cy="-82.3" r="7"/><circle cx="47.5" cy="-82.3" r="7"/></g>
+    </g>
+    <circle r="42" fill="url(#core)"/><circle r="11" fill="#fff"/>
+  </g>
+  <line x1="670" y1="170" x2="670" y2="430" stroke="#7aa2ff" stroke-opacity="0.3" stroke-width="2"/>
+  <g transform="translate(272.75 214.75) scale(1.55)" fill="none" stroke="url(#word)" stroke-width="14" stroke-linejoin="miter" stroke-linecap="square" filter="url(#glow)">
+    <path d="M405,0 L320,0 L295,25 L295,85 L320,110 L405,110 L405,60 L355,60"/>
+    <path d="M450,0 L450,85 L475,110 L535,110 L560,85 L560,0"/>
+    <path d="M605,0 L605,110"/>
+    <path d="M650,0 L650,110 L750,110"/>
+    <path d="M795,0 L795,110 L880,110 L905,85 L905,25 L880,0 Z"/>
+  </g>
+</svg>

@@ -1,28 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { profile } from "@/app/components/portfolio/data";
+import { metaDescription, metaTitle, profile } from "@/app/components/portfolio/data";
 import { siteUrl } from "@/app/lib/site";
 import "./globals.css";
 
-const title = `${profile.firstName} ${profile.lastName} | ${profile.role}`;
-const description = `${profile.summary} ${profile.tagline}`;
+const title = metaTitle;
+const description = metaDescription;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: title,
-    template: `%s | ${profile.firstName} ${profile.lastName}`,
+    template: `%s | ${profile.fullName}`,
   },
   description,
   keywords: [
-    "operations specialist",
-    "systems specialist",
-    "virtual assistant",
+    "app builder",
+    "AI coding agents",
+    "Claude Code",
+    "PHP developer",
+    "business systems",
+    "ERP implementation",
     "project management",
-    "technical support",
-    "WordPress",
-    "GoHighLevel",
-    "Power Automate",
-    "SAP Business One",
     "Philippines",
   ],
   authors: [{ name: profile.fullName, url: siteUrl }],
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: `${profile.firstName} ${profile.lastName}`,
+    siteName: profile.fullName,
     title,
     description,
   },
@@ -61,7 +59,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <a href="#main-content" className="skip-link">
-          Skip to content
+          Skip to main content
         </a>
         {children}
       </body>

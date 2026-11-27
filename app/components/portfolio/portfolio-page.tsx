@@ -1,15 +1,20 @@
-import { ArrowUp } from "lucide-react";
 import Navbar from "@/app/components/navbar";
 import GridBackground from "@/app/components/ui/grid-background";
-import { contactLink, mailtoHref, navLinks, profile } from "./data";
+import type { PublicResult } from "@/app/lib/admin/storage";
+import { mailtoHref, profile } from "./data";
 import AboutSection from "./sections/about-section";
-import ExpertiseSection from "./sections/expertise-section";
+import AiSection from "./sections/ai-section";
+import AppsSection from "./sections/apps-section";
+import ContactSection from "./sections/contact-section";
 import HeroSection from "./sections/hero-section";
+import ProjectsSection from "./sections/projects-section";
 import ServicesSection from "./sections/services-section";
-import WorkSection from "./sections/work-section";
 import WhySection from "./sections/why-section";
+import StickyCta from "./sticky-cta";
 
-export default function PortfolioPage() {
+export default function PortfolioPage({ projects }: { projects: PublicResult }) {
+  const externalLinks = [profile.linkedin, profile.upwork, profile.onlineJobs];
+
   return (
     <div className="portfolio-shell">
       <Navbar />
@@ -19,61 +24,47 @@ export default function PortfolioPage() {
           <HeroSection />
         </div>
         <AboutSection />
-        <ExpertiseSection />
+        <AppsSection />
+        <ProjectsSection result={projects} />
+        <AiSection />
         <ServicesSection />
-        <WorkSection />
         <WhySection />
+        <ContactSection />
       </main>
 
       <footer className="site-footer">
-        <div className="footer-intro">
-          <a className="footer-brand" href="#top">
-            {profile.firstName} {profile.lastName}
-            <span>.</span>
-          </a>
-          <p>{profile.tagline}</p>
+        <div className="footer-guild">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/guild-logo-horizontal-transparent.svg"
+            alt="Guild"
+            width={119}
+            height={40}
+            className="footer-logo"
+          />
+          <p>Guild is an app I built.</p>
         </div>
-
-        <nav className="footer-nav" aria-label="Footer navigation">
-          <h3>Explore</h3>
-          <ul>
-            {[...navLinks, contactLink].map((link) => (
-              <li key={link.name}>
-                <a href={link.href}>{link.name}</a>
+        <div className="footer-meta">
+          <span className="footer-brand">
+            © {new Date().getFullYear()} {profile.fullName}
+          </span>
+          <ul className="footer-links">
+            <li>
+              <a href={mailtoHref} rel="noopener noreferrer">
+                Email
+              </a>
+            </li>
+            {externalLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} target="_blank" rel="noopener noreferrer">
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>
-        </nav>
-
-        <div className="footer-nav">
-          <h3>Connect</h3>
-          <ul>
-            <li>
-              <a href={mailtoHref}>{profile.email}</a>
-            </li>
-            <li>
-              <a href={profile.linkedin.href} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a href={profile.onlineJobs.href} target="_blank" rel="noreferrer">
-                OnlineJobs.ph
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="footer-bottom">
-          <span>
-            © {new Date().getFullYear()} {profile.legalName}. All rights
-            reserved.
-          </span>
-          <a href="#top" className="footer-top">
-            Back to top <ArrowUp aria-hidden="true" />
-          </a>
         </div>
       </footer>
+      <StickyCta />
     </div>
   );
 }

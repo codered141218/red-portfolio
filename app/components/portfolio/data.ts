@@ -23,28 +23,34 @@ export type NavLink = { name: string; href: string };
  */
 export const profile = {
   firstName: "John",
-  lastName: "Reden",
-  fullName: "John Reden Gavieta",
+  fullName: "John Reded C. Gavieta",
   surname: "Gavieta",
-  legalName: "John Reden C. Gavieta",
-  role: "Operations & Systems Specialist",
-  tagline:
-    "Helping businesses streamline operations, optimize systems, and build efficient workflows that drive sustainable growth.",
+  nickname: "Red",
+  brandMark: "JRG",
+  role: "App builder. Operations & Systems Specialist.",
+  jobTitle: "App Builder",
   summary:
-    "Operations & Systems Specialist with 8+ years of experience in operations, project management, technical support, and virtual assistance.",
+    "I build business apps with coding agents and AI tools, backed by 8+ years of running the business side: operations, ERP implementations, project management and branch management.",
   email: "jrgavieta.personal@gmail.com",
   emailSubject: "Project inquiry from your portfolio",
   location: "Philippines",
   linkedin: {
-    label: "John Reden Gavieta",
-    href: "https://www.linkedin.com/in/john-reden-gavieta-8288a9240/",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/john-reded-gavieta-8288a9240",
+  },
+  upwork: {
+    label: "Upwork",
+    href: "https://www.upwork.com/freelancers/~01afa8125384b5d6a2?mp_source=share",
   },
   onlineJobs: {
-    label: "onlinejobs.ph/jobseekers/info/3478596",
+    label: "OnlineJobs.ph",
     href: "https://www.onlinejobs.ph/jobseekers/info/3478596",
   },
-  portrait: "/john-reden-portrait.png",
+  portrait: "/john-reded-portrait.png",
 } as const;
+
+export const metaTitle = `${profile.fullName} | App Builder with AI Coding Agents`;
+export const metaDescription = `${profile.fullName} builds business apps with coding agents and AI tools, backed by 8+ years in ERP, operations and project management. Based in the Philippines.`;
 
 export const mailtoHref = `mailto:${profile.email}?subject=${encodeURIComponent(
   profile.emailSubject,
@@ -52,12 +58,126 @@ export const mailtoHref = `mailto:${profile.email}?subject=${encodeURIComponent(
 
 export const navLinks: NavLink[] = [
   { name: "About", href: "#about" },
-  { name: "Expertise", href: "#expertise" },
+  { name: "Apps", href: "#apps" },
+  { name: "Projects", href: "#projects" },
+  { name: "AI", href: "#ai" },
   { name: "Services", href: "#services" },
-  { name: "Work", href: "#projects" },
+  { name: "Contact", href: "#contact" },
 ];
 
-export const contactLink: NavLink = { name: "Contact", href: "#contact" };
+export const industries = [
+  "Retail",
+  "F&B",
+  "Distribution",
+  "Schools",
+  "Manufacturing",
+  "IT Services",
+  "Government",
+];
+
+export type App = {
+  name: string;
+  tag?: string;
+  description: string;
+  icon: "crm" | "loan" | "guild" | "scopeit";
+  /** Add a URL later and the card gets a "View project" button. */
+  url?: string;
+};
+
+export const apps: App[] = [
+  {
+    name: "CRM",
+    tag: "Web app, PHP",
+    description: "CRM software built with PHP.",
+    icon: "crm",
+  },
+  {
+    name: "Loan Management",
+    description: "A loan management system, built with PHP.",
+    icon: "loan",
+  },
+  {
+    name: "Guild",
+    tag: "Built recently",
+    description:
+      "My recent app, built with coding agents and AI tools. A fuller description is coming.",
+    icon: "guild",
+  },
+  {
+    name: "ScopeIT",
+    description:
+      "Built with MiniMax, which analyses all inputs in ScopeIT and produces the necessary outputs.",
+    icon: "scopeit",
+  },
+];
+
+export type AiTool = { name: string; description: string; logo?: string };
+
+export const aiTools: AiTool[] = [
+  {
+    name: "Claude Code",
+    description: "Heavy software engineering.",
+    logo: "/logo/ai/claude.svg",
+  },
+  {
+    name: "Codex",
+    description: "Heavy software engineering.",
+    logo: "/logo/ai/openai.svg",
+  },
+  {
+    name: "MiniMax",
+    description:
+      "The AI model behind ScopeIT. It analyses all inputs and produces the necessary outputs.",
+  },
+  { name: "MCPs", description: "Connecting tools to Claude." },
+  {
+    name: "Fireflies",
+    description:
+      "Recording and summarising meetings so I don't miss any details.",
+  },
+  { name: "Specboard", description: "Part of my toolkit." },
+  {
+    name: "Supabase",
+    description: "Database and authentication for my apps.",
+    logo: "/logo/ai/supabase.svg",
+  },
+  {
+    name: "Railway",
+    description: "Hosting for backends and services.",
+    logo: "/logo/ai/railway.svg",
+  },
+  {
+    name: "Vercel",
+    description: "Hosting and previews for my web apps.",
+    logo: "/logo/ai/vercel.svg",
+  },
+  {
+    name: "Dockerfile",
+    description: "Packaging apps into containers.",
+    logo: "/logo/ai/docker.svg",
+  },
+  {
+    name: "Laravel Herd",
+    description: "Local PHP and Laravel development.",
+    logo: "/logo/ai/laravel.svg",
+  },
+  {
+    name: "GitHub",
+    description: "Code hosting, pull requests and automation.",
+    logo: "/logo/ai/github.svg",
+  },
+  {
+    name: "Guild",
+    description: "My own AI dev crew that plans, builds and ships pull requests.",
+    logo: "/brand/guild-logo-horizontal-transparent.svg",
+  },
+];
+
+export const alsoToolkit = [
+  "Power Automate and UI.Vision for repetitive tasks",
+  "Custom skills for AI agents",
+  "Canva artifacts",
+];
 
 export const education = {
   years: "2013–2017",
@@ -162,15 +282,6 @@ export const toolGroups: ToolGroup[] = [
   },
 ];
 
-const businessSystemsCount = toolGroups[0].tools.length;
-const toolCount = toolGroups.reduce((total, group) => total + group.tools.length, 0);
-
-export const highlights = [
-  { value: "8+", label: "years of experience" },
-  { value: String(businessSystemsCount), label: "business systems" },
-  { value: String(toolCount), label: "tools & platforms" },
-];
-
 export const services: Service[] = [
   {
     title: "Operations support",
@@ -267,6 +378,7 @@ export const workCategories: WorkCategory[] = [
 ];
 
 export const whyItems = [
+  "I understand the business, not just the code",
   "8+ years of experience",
   "Reliable and proactive",
   "Operations-focused mindset",

@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { profile } from "@/app/components/portfolio/data";
+import { metaDescription, profile } from "@/app/components/portfolio/data";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${profile.firstName} ${profile.lastName} | ${profile.role}`,
-    short_name: `${profile.firstName} ${profile.lastName}`,
-    description: profile.summary,
+    name: profile.fullName,
+    short_name: profile.fullName,
+    description: metaDescription,
     start_url: "/",
     display: "standalone",
     background_color: "#050505",

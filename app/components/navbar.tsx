@@ -1,17 +1,16 @@
 "use client";
 
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Mail, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { contactLink, navLinks, profile } from "@/app/components/portfolio/data";
+import { mailtoHref, navLinks, profile } from "@/app/components/portfolio/data";
 
-const mobileNavLinks = [...navLinks, contactLink];
-const sectionHrefs = ["#top", ...mobileNavLinks.map((link) => link.href)];
+const sectionHrefs = ["#top", ...navLinks.map((link) => link.href)];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#top");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuPanelRef = useRef<HTMLElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
 
   // Highlight the nav link for whichever section is currently in view.
   useEffect(() => {
@@ -96,14 +95,14 @@ export default function Navbar() {
 
   return (
     <header className="site-header">
-      <nav className="site-nav" aria-label="Primary navigation">
+      <nav className="site-nav" aria-label="Main">
         <a
           href="#top"
           className="brand"
-          aria-label={`${profile.firstName} ${profile.lastName} portfolio home`}
+          aria-label={`${profile.fullName}, home`}
           onClick={() => handleNavClick("#top")}
         >
-          {profile.firstName} {profile.lastName}
+          {profile.brandMark}
           <span>.</span>
         </a>
 
@@ -122,11 +121,11 @@ export default function Navbar() {
         </div>
 
         <a
-          href={contactLink.href}
+          href={mailtoHref}
+          rel="noopener noreferrer"
           className="nav-cta nav-cta-desktop"
-          onClick={() => handleNavClick(contactLink.href)}
         >
-          Let&apos;s talk <ArrowUpRight aria-hidden="true" />
+          Email me <Mail aria-hidden="true" />
         </a>
 
         <button
@@ -146,7 +145,7 @@ export default function Navbar() {
           hidden={!isMenuOpen}
           onClick={closeMenu}
         >
-          <aside
+          <div
             id="mobile-navigation"
             className="mobile-nav"
             ref={menuPanelRef}
@@ -161,7 +160,7 @@ export default function Navbar() {
                 className="mobile-nav-brand"
                 onClick={() => handleNavClick("#top")}
               >
-                {profile.firstName} {profile.lastName}
+                {profile.brandMark}
                 <span>.</span>
               </a>
 
@@ -178,7 +177,7 @@ export default function Navbar() {
             </div>
 
             <div className="mobile-nav-links">
-              {mobileNavLinks.map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
@@ -192,10 +191,10 @@ export default function Navbar() {
             </div>
 
             <p className="mobile-nav-note">
-              Operations <span aria-hidden="true">•</span> Systems{" "}
-              <span aria-hidden="true">•</span> Digital support
+              Apps <span aria-hidden="true">•</span> AI{" "}
+              <span aria-hidden="true">•</span> Business systems
             </p>
-          </aside>
+          </div>
         </div>
       </nav>
     </header>
