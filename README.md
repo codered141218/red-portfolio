@@ -104,6 +104,9 @@ git-ignored). Never commit real values. To change the password, edit
 The staff area is `noindex`, disallowed in `robots.txt` and left out of the
 sitemap.
 
+Screenshot URLs of a draft are public (unguessable) links, so anyone who gets
+one can open the image even though the project is not published.
+
 ## Deploy
 
 Any Next.js host works. For Vercel, import the repository and set

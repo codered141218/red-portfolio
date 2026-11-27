@@ -19,7 +19,12 @@ const personSchema = {
     "@type": "CollegeOrUniversity",
     name: education.school,
   },
-  knowsAbout: services.flatMap((service) => [service.title, ...service.items]),
+  knowsAbout: [
+    ...services.flatMap((service) => [service.title, ...service.items]),
+    "PHP",
+    "ERP implementation",
+    "AI coding agents",
+  ],
   sameAs: [profile.linkedin.href, profile.upwork.href, profile.onlineJobs.href],
 };
 

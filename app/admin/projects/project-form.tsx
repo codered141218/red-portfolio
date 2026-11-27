@@ -148,7 +148,7 @@ export default function ProjectForm({ csrf, initial }: { csrf: string; initial: 
     if (!summary.trim()) out.summary = "Add a short summary.";
     else if (summary.trim().length > LIMITS.maxSummary) out.summary = `Keep the summary to ${LIMITS.maxSummary} characters.`;
     const l = link.trim();
-    if (l && (l.length > LIMITS.maxLink || !isHttpUrl(l))) out.link = "Enter a full link that starts with https://";
+    if (l && (l.length > LIMITS.maxLink || !isHttpUrl(l))) out.link = "Enter a full link that starts with http:// or https://";
     if (privacyNote.trim().length > LIMITS.maxPrivacyNote) {
       out.privacyNote = `Keep the note to ${LIMITS.maxPrivacyNote} characters.`;
     }
@@ -312,8 +312,8 @@ export default function ProjectForm({ csrf, initial }: { csrf: string; initial: 
         className="form"
         noValidate
         onSubmit={(e) => {
+          // Enter in a text field must never save or publish; only buttons do.
           e.preventDefault();
-          void submit(published ? "save" : "publish");
         }}
       >
         <section className="card">
@@ -503,9 +503,10 @@ export default function ProjectForm({ csrf, initial }: { csrf: string; initial: 
               </button>
             )}
             <button
-              type="submit"
+              type="button"
               className="button button-primary action-primary"
               disabled={locked || uploading}
+              onClick={() => void submit(published ? "save" : "publish")}
               aria-busy={busy === "publish" || busy === "save"}
             >
               {published ? label("save", "Save changes") : label("publish", "Publish")}

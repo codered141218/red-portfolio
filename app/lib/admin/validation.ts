@@ -75,7 +75,7 @@ export function validateProjectInput(
 
   const link = str(body.link);
   if (link && (link.length > LIMITS.maxLink || !isHttpUrl(link))) {
-    errors.link = "Enter a full link that starts with https://";
+    errors.link = "Enter a full link that starts with http:// or https://";
   }
 
   const privacyNote = str(body.privacyNote);

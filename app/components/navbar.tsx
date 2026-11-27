@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#top");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuPanelRef = useRef<HTMLElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
 
   // Highlight the nav link for whichever section is currently in view.
   useEffect(() => {
@@ -145,7 +145,7 @@ export default function Navbar() {
           hidden={!isMenuOpen}
           onClick={closeMenu}
         >
-          <aside
+          <div
             id="mobile-navigation"
             className="mobile-nav"
             ref={menuPanelRef}
@@ -194,7 +194,7 @@ export default function Navbar() {
               Apps <span aria-hidden="true">•</span> AI{" "}
               <span aria-hidden="true">•</span> Business systems
             </p>
-          </aside>
+          </div>
         </div>
       </nav>
     </header>

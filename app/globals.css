@@ -95,6 +95,13 @@ a {
   letter-spacing: -0.04em;
 }
 
+.brand {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+}
+
 .brand span,
 .footer-brand span,
 .hero-dot {
@@ -1845,6 +1852,7 @@ textarea:focus-visible,
 
 .footer-links a {
   display: inline-flex;
+  min-width: 44px;
   min-height: 44px;
   align-items: center;
   color: #d0d0d0;
