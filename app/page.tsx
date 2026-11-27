@@ -8,9 +8,9 @@ const personSchema = {
   name: profile.fullName,
   givenName: profile.firstName,
   familyName: profile.surname,
-  jobTitle: profile.role,
+  jobTitle: profile.jobTitle,
   description: profile.summary,
-  email: `mailto:${profile.email}`,
+  email: profile.email,
   url: siteUrl,
   image: `${siteUrl}${profile.portrait}`,
   address: { "@type": "PostalAddress", addressCountry: "PH" },
@@ -19,7 +19,7 @@ const personSchema = {
     name: education.school,
   },
   knowsAbout: services.flatMap((service) => [service.title, ...service.items]),
-  sameAs: [profile.linkedin.href, profile.onlineJobs.href],
+  sameAs: [profile.linkedin.href, profile.upwork.href, profile.onlineJobs.href],
 };
 
 export default function Home() {

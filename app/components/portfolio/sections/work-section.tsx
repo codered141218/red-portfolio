@@ -62,10 +62,10 @@ export default function WorkSection() {
 
   return (
     <>
-      <section className="section projects" id="projects">
-        <div className="section-heading">
-          <h2>Selected work</h2>
-        </div>
+      <div className="sample-work" id="sample-work">
+        <h3 className="subheading">
+          Sample work: websites, GoHighLevel and automation
+        </h3>
 
         <div className="work-categories">
           {workCategories.map((item, categoryIndex) => (
@@ -73,7 +73,7 @@ export default function WorkSection() {
               <header>
                 <span>{String(categoryIndex + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3>{item.title}</h3>
+                  <h4>{item.title}</h4>
                   <p>{item.description}</p>
                 </div>
               </header>
@@ -102,7 +102,7 @@ export default function WorkSection() {
             </article>
           ))}
         </div>
-      </section>
+      </div>
 
       {category && image && selectedWork && (
         <div

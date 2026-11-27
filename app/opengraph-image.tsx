@@ -50,12 +50,12 @@ export default async function OpenGraphImage() {
           <div
             style={{
               display: "flex",
-              fontSize: 168,
+              fontSize: 110,
               lineHeight: 0.9,
               letterSpacing: "-0.07em",
             }}
           >
-            {profile.firstName} {profile.lastName}
+            {profile.fullName}
             <span style={{ color: "#ff0000" }}>.</span>
           </div>
           <div
@@ -67,7 +67,7 @@ export default async function OpenGraphImage() {
               color: "#bdbdbd",
             }}
           >
-            {profile.tagline}
+            {profile.summary}
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default async function OpenGraphImage() {
           }}
         >
           <span>{profile.email}</span>
-          <span>8+ years · Operations · Systems · Digital support</span>
+          <span>8+ years · Apps · AI tools · Business systems</span>
         </div>
       </div>
     ),

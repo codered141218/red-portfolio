@@ -1,6 +1,7 @@
-# John Reden portfolio
+# John Reded C. Gavieta portfolio
 
-Single-page portfolio for John Reden Gavieta, Operations & Systems Specialist.
+Single-page portfolio for John Reded C. Gavieta: an app builder who uses coding
+agents and AI tools, backed by 8+ years of business-systems experience.
 Built with Next.js 16 (App Router, React Compiler), React 19, Tailwind CSS v4,
 and hand-written CSS in `app/globals.css`.
 
@@ -24,22 +25,22 @@ npm run start
 All personal details and page content live in one file:
 [`app/components/portfolio/data.ts`](app/components/portfolio/data.ts).
 
-| What to change                          | Where in `data.ts`      |
-| --------------------------------------- | ----------------------- |
-| Name, role, email, LinkedIn, OnlineJobs | `profile`               |
-| Header / footer navigation              | `navLinks`, `contactLink` |
-| Education and experience                | `education`, `experience` |
-| Tools & systems logos                   | `toolGroups`            |
-| Core services                           | `services`              |
-| Selected work screenshots and captions  | `workCategories`        |
-| "Why work with me" bullets              | `whyItems`              |
-
-The highlight numbers in the About section (business systems, tools & platforms)
-are counted from `toolGroups`, so they stay accurate as logos are added or removed.
+| What to change                                   | Where in `data.ts`          |
+| ------------------------------------------------ | --------------------------- |
+| Name, role, email, LinkedIn, Upwork, OnlineJobs  | `profile`                   |
+| Meta title and description                       | `metaTitle`, `metaDescription` |
+| Header navigation                                | `navLinks`                  |
+| Industries, education, experience                | `industries`, `education`, `experience` |
+| Featured apps (add a `url` to show a button)     | `apps`                      |
+| AI tools and the "also in my toolkit" chips      | `aiTools`, `alsoToolkit`    |
+| Other services, tools & systems logos            | `services`, `toolGroups`    |
+| Sample work screenshots and captions             | `workCategories`            |
+| "Why work with me" bullets                       | `whyItems`                  |
 
 Images live in `public/`:
 
-- `public/john-reden-portrait.png` - hero portrait (transparent PNG).
+- `public/john-reded-portrait.png` - hero portrait (transparent PNG).
+- `public/brand/guild-logo-horizontal-transparent.svg` - Guild logo used in the footer.
 - `public/logo/<group>/` - tool logos, roughly 112x40 display size.
 - `public/sample-works/<category>/` - work screenshots at 651x303 (2.15:1).
   Give each image a short, specific `alt` in `workCategories`; it doubles as
@@ -48,9 +49,10 @@ Images live in `public/`:
 ## Site URL and sharing
 
 Set `NEXT_PUBLIC_SITE_URL` to the production domain (for example
-`https://johnreden.com`) so the canonical URL, Open Graph tags, sitemap,
+`https://john-redportfolio.vercel.app`) so the canonical URL, Open Graph tags, sitemap,
 robots.txt, and structured data point at the live site. On Vercel the project's
-production URL is used automatically when the variable is not set.
+production URL is used automatically when the variable is not set, and the live
+site URL is the final fallback.
 
 The following are generated at build time from the content in `data.ts`:
 
@@ -73,7 +75,7 @@ app/
     portfolio/
       data.ts                content
       portfolio-page.tsx     page composition + footer
-      sections/              hero, about, expertise, services, work, why
+      sections/              hero, about, apps, projects, ai, services, work, why, contact
 ```
 
 ## Deploy

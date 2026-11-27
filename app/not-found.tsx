@@ -16,7 +16,7 @@ export default function NotFound() {
       </h1>
       <p>
         The link may be outdated or mistyped. Head back to the portfolio to
-        see {profile.firstName}&apos;s work, services, and contact details.
+        see {profile.firstName}&apos;s apps, services, and contact details.
       </p>
       <Link href="/" className="button button-primary">
         Back to the portfolio <ArrowUpRight aria-hidden="true" />
